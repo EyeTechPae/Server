@@ -40,7 +40,7 @@ public class MessageHandler implements ConnectionHandler {
                 String str = new String(buffer, 0, read);
 
                 // update message
-                Message.Type tp = Message.Type.values()[type];
+                Message.Type tp = Message.Type.values()[type-1];
                 Message msg = new Message(tp, str);
                 data.setMessage(msg);
                 System.out.println("[MSG] Message set to \""+str+"\" ("+tp+")");
