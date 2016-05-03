@@ -15,20 +15,24 @@ public class EndPoint  extends Thread {
     /** connection handler */
     private ConnectionHandler handler;
 
+    /** End point name */
+    private String name;
+
     /**
      *
      * @param port Listening port
      * @param handler Socket connection handler
      * @throws IOException error initializing server.Server
      */
-    public EndPoint (int port, ConnectionHandler handler) throws IOException {
+    public EndPoint (String name, int port, ConnectionHandler handler) throws IOException {
         this.server = new ServerSocket(port);
         this.handler = handler;
+        this.name = name;
     }
 
     @Override
     public void run() {
-        System.out.println("["+this.getClass().getName()+"] Listening on port "+server.getLocalPort());
+        System.out.println("["+name+"] Listening on "+server.getLocalSocketAddress());
         while (true) {
             try {
                 Socket socket = server.accept();

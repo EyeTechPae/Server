@@ -18,10 +18,10 @@ public class Server {
         Database data = new Database();
 
         // Set up end points
-        EndPoint pro = new EndPoint(3332, new PlatesHandler(data));
-        EndPoint xml = new EndPoint(3333, new XmlHandler(data));
-        EndPoint app = new EndPoint(3334, new AppHandler(data));
-        EndPoint msg = new EndPoint(3335, new MessageHandler(data));
+        EndPoint pro = new EndPoint("PLA", 3332, new PlatesHandler(data));
+        EndPoint xml = new EndPoint("XML", 3333, new XmlHandler(data));
+        EndPoint app = new EndPoint("APP", 3334, new AppHandler(data));
+        EndPoint msg = new EndPoint("MSG", 3335, new MessageHandler(data));
 
         // start threads
         pro.start();

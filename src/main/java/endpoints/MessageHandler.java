@@ -20,7 +20,7 @@ public class MessageHandler implements ConnectionHandler {
     }
 
     public void onConnected(Socket socket) throws IOException {
-        System.out.println("[MSG] "+socket.getInetAddress()+" connected.");
+        System.out.println("[MSG] "+socket.getInetAddress()+":"+socket.getPort()+" connected.");
 
         // set timeout
         socket.setSoTimeout(1000);

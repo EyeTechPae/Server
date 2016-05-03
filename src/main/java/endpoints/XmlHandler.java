@@ -23,7 +23,7 @@ public class XmlHandler implements ConnectionHandler {
     }
 
     public void onConnected(Socket socket) throws IOException {
-        System.out.println("[XML] "+socket.getInetAddress()+" connected.");
+        System.out.println("[XML] "+socket.getInetAddress()+":"+socket.getPort()+" connected.");
 
         // open output stream
         OutputStream os = socket.getOutputStream();

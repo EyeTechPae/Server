@@ -22,7 +22,7 @@ public class AppHandler implements ConnectionHandler {
     }
 
     public void onConnected(Socket socket) throws IOException {
-        System.out.println("[APP] "+socket.getInetAddress()+" connected.");
+        System.out.println("[APP] "+socket.getInetAddress()+":"+socket.getPort()+" connected.");
 
         // open output stream
         OutputStream os = socket.getOutputStream();
