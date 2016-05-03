@@ -22,15 +22,19 @@ public class AppHandler implements ConnectionHandler {
     }
 
     public void onConnected(Socket socket) throws IOException {
+        System.out.println("[APP] "+socket.getInetAddress()+" connected.");
+
         // open output stream
         OutputStream os = socket.getOutputStream();
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
 
         // write json file
+        System.out.println("[APP] Sending data");
         data.writeAppData(writer);
         writer.flush();
 
         // close on finished
         socket.close();
+        System.out.println("[APP] Connection closed");
     }
 }

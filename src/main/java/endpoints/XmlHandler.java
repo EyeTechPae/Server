@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.logging.Logger;
 
 /**
  * Created by germangb on 03/05/16.
@@ -22,15 +23,19 @@ public class XmlHandler implements ConnectionHandler {
     }
 
     public void onConnected(Socket socket) throws IOException {
+        System.out.println("[XML] "+socket.getInetAddress()+" connected.");
+
         // open output stream
         OutputStream os = socket.getOutputStream();
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
 
-        // write json file
+        // write xml file
+        System.out.println("[XML] Sending data");
         data.writeXmlData(writer);
         writer.flush();
 
         // close on finished
         socket.close();
+        System.out.println("[XML] Connection closed");
     }
 }

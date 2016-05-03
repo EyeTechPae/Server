@@ -28,6 +28,7 @@ public class EndPoint  extends Thread {
 
     @Override
     public void run() {
+        System.out.println("["+this.getClass().getName()+"] Listening on port "+server.getLocalPort());
         while (true) {
             try {
                 Socket socket = server.accept();

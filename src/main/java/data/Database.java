@@ -97,11 +97,11 @@ public class Database {
 
         // write message
         writer.write("\"mType\": \""+mType+"\",\n");
-        writer.write("\"message\": \""+msg+"\"\n");
+        writer.write("\"message\": \""+msg+"\",\n");
 
         // write places
         writer.write("\"freePlaces\": "+(TOTAL_PLACES - inside)+",\n");
-        writer.write("\"totalPlaces\": "+TOTAL_PLACES+",\n");
+        writer.write("\"totalPlaces\": "+TOTAL_PLACES+"\n");
 
         // end json
         writer.write("}\n");
