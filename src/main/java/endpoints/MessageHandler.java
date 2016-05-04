@@ -13,6 +13,9 @@ import java.net.SocketTimeoutException;
  */
 public class MessageHandler implements ConnectionHandler {
 
+    /** Time before the connection times out */
+    private static final int TIMEOUT = 2000;
+
     private Database data;
 
     public MessageHandler (Database data) {
@@ -23,7 +26,7 @@ public class MessageHandler implements ConnectionHandler {
         System.out.println("[MSG] "+socket.getInetAddress()+":"+socket.getPort()+" connected.");
 
         // set timeout
-        socket.setSoTimeout(1000);
+        socket.setSoTimeout(TIMEOUT);
 
         try {
             // open input stream

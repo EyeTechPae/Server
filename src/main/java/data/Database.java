@@ -41,6 +41,22 @@ public class Database {
     }
 
     /**
+     * Return the message
+     * @return current message, null if none is set
+     */
+    public synchronized Message getMessage () {
+        return message;
+    }
+
+    /**
+     * Number of cars inside
+     * @return
+     */
+    public synchronized int getInside () {
+        return inside;
+    }
+
+    /**
      * Add a entry to the license plate stuff
      * @param entry
      */
