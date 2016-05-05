@@ -1,6 +1,7 @@
 package endpoints;
 
 import data.Database;
+import data.PlateEntry;
 import server.ConnectionHandler;
 
 import java.io.IOException;
@@ -19,6 +20,32 @@ public class PlatesHandler implements ConnectionHandler {
     }
 
     public void onConnected(Socket socket) throws IOException {
-        // TODO read license plates
+        System.out.println("[PLA] License plates connected");
+
+        byte[] buffer = new byte[128];
+        while (true) {
+
+            try {
+                // get event
+                int event = socket.getInputStream().read();
+
+                // read license plate
+                int read = socket.getInputStream().read(buffer);
+
+                // update database
+                PlateEntry.Event ev = event == 0 ? PlateEntry.Event.In : PlateEntry.Event.Out;
+                String plate = new String(buffer, 0, read);
+
+                PlateEntry entry = new PlateEntry(plate, ev);
+                data.addPlateEntry(entry);
+
+                System.out.println("[PLA] Updated "+plate+" "+ev);
+            } catch (Exception e) {
+                //e.printStackTrace();
+                break;
+            }
+        }
+
+        System.out.println("[PLA] License plates disconnected");
     }
 }
